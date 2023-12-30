@@ -1,6 +1,4 @@
-import { Workspace, StarterPack, ServerStorage } from "@rbxts/services";
-
-interface Workspace extends Model {
+interface Workspace extends Instance {
 	Camera: Camera;
 	Baseplate: Part & {
 		Texture: Texture;
@@ -274,7 +272,7 @@ interface Workspace extends Model {
 	TechSetup: Script;
 }
 
-interface ServerStorage extends Instance {
+interface ServerStorage {
 	Dummy: Model & {
 		["Left Leg"]: Part & {
 			LeftFootAttachment: Attachment;
@@ -326,7 +324,7 @@ interface ServerStorage extends Instance {
 	};
 }
 
-interface StarterPack extends Instance {
+interface StarterPack {
 	Carbine: Tool & {
 		CarbineDropper: Script;
 		Carbine: Model & {

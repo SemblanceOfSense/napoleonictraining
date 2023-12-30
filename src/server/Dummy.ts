@@ -1,16 +1,36 @@
 import { Workspace, ServerStorage, StarterPack } from "@rbxts/services";
 
-class Dummy {
-    private position: Vector3;
+export class Dummy {
     private model: Model;
     private humanoid: Humanoid;
+    private humanoidRootPart: Part;
 
     public constructor(pos: Vector3) {
-        this.position = pos;
-
-        this.model = ServerStorage.Dummy;
+        this.model = ServerStorage.Dummy.Clone();
         this.model.Parent = Workspace;
 
-        this.humanoid = this.model.Humanoid;
+        this.humanoid = this.model.WaitForChild("Humanoid") as Humanoid;
+        this.humanoidRootPart = this.model.WaitForChild("HumanoidRootPart") as Part;
+        this.tp(pos);
+    }
+
+    public getPosition(): Vector3 {
+        return this.humanoidRootPart.Position;
+    }
+
+    public getModel(): Model {
+        return this.model;
+    }
+
+    public getHumanoid(): Humanoid {
+        return this.humanoid;
+    }
+
+    public getHumanoidRootPart(): Part {
+        return this.humanoidRootPart;
+    }
+
+    public tp(where: Vector3): void {
+        this.humanoidRootPart.Position = where;
     }
 }
