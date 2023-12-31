@@ -272,8 +272,9 @@ interface Workspace extends Instance {
 	TechSetup: Script;
 }
 
-interface ServerStorage {
-	Dummy: Model & {
+interface ServerStorage extends Instance {
+	__Rojo_SessionLock: ObjectValue;
+	Runner: Model & {
 		["Left Leg"]: Part & {
 			LeftFootAttachment: Attachment;
 		};
@@ -286,6 +287,7 @@ interface ServerStorage {
 		};
 		Head: Part & {
 			HatAttachment: Attachment;
+			Snap: Snap;
 			FaceFrontAttachment: Attachment;
 			HairAttachment: Attachment;
 			face: Decal;
@@ -296,16 +298,16 @@ interface ServerStorage {
 			RightCollarAttachment: Attachment;
 			WaistCenterAttachment: Attachment;
 			BodyBackAttachment: Attachment;
-			["Right Shoulder"]: Motor6D;
 			Neck: Motor6D;
 			LeftCollarAttachment: Attachment;
+			["Right Shoulder"]: Motor6D;
+			["Left Shoulder"]: Motor6D;
+			roblox: Decal;
 			["Left Hip"]: Motor6D;
 			["Right Hip"]: Motor6D;
-			roblox: Decal;
-			["Left Shoulder"]: Motor6D;
-			WaistFrontAttachment: Attachment;
 			BodyFrontAttachment: Attachment;
 			WaistBackAttachment: Attachment;
+			WaistFrontAttachment: Attachment;
 			NeckAttachment: Attachment;
 		};
 		HumanoidRootPart: Part & {
@@ -320,6 +322,58 @@ interface ServerStorage {
 			LeftGripAttachment: Attachment;
 			LeftShoulderAttachment: Attachment;
 		};
+		Number: NumberValue;
+		["Body Colors"]: BodyColors;
+	};
+	Dummy: Model & {
+		["Left Leg"]: Part & {
+			LeftFootAttachment: Attachment;
+		};
+		Humanoid: Humanoid & {
+			Animator: Animator;
+			HumanoidDescription: HumanoidDescription;
+		};
+		["Right Leg"]: Part & {
+			RightFootAttachment: Attachment;
+		};
+		Head: Part & {
+			HatAttachment: Attachment;
+			Snap: Snap;
+			FaceFrontAttachment: Attachment;
+			HairAttachment: Attachment;
+			face: Decal;
+			Mesh: SpecialMesh;
+			FaceCenterAttachment: Attachment;
+		};
+		Torso: Part & {
+			RightCollarAttachment: Attachment;
+			WaistCenterAttachment: Attachment;
+			BodyBackAttachment: Attachment;
+			Neck: Motor6D;
+			LeftCollarAttachment: Attachment;
+			["Right Shoulder"]: Motor6D;
+			["Left Shoulder"]: Motor6D;
+			roblox: Decal;
+			["Left Hip"]: Motor6D;
+			["Right Hip"]: Motor6D;
+			BodyFrontAttachment: Attachment;
+			WaistBackAttachment: Attachment;
+			WaistFrontAttachment: Attachment;
+			NeckAttachment: Attachment;
+		};
+		HumanoidRootPart: Part & {
+			RootJoint: Motor6D;
+			RootAttachment: Attachment;
+		};
+		["Right Arm"]: Part & {
+			RightShoulderAttachment: Attachment;
+			RightGripAttachment: Attachment;
+		};
+		["Left Arm"]: Part & {
+			LeftGripAttachment: Attachment;
+			LeftShoulderAttachment: Attachment;
+		};
+		Number: NumberValue;
 		["Body Colors"]: BodyColors;
 	};
 }
