@@ -1,10 +1,13 @@
 import { Workspace } from "@rbxts/services";
 import { Dummy } from "./Dummy"
+import { getDescendantsWhichIsA } from "./getDescendentsWhichIsA";
+import { newDummy } from "./DummyManager";
 
 const dummies: Dummy[] = [];
-for (var part of Workspace.GetDescendants) {
-    if (part.Name == "spawnDummy") {
-        const newDummy = new Dummy(part.Position);
-        dummies.push(newDummy);
+const descendants: Array<Part> = getDescendantsWhichIsA(Workspace, "Part")
+
+descendants.forEach( (element) => {
+    if (element.Name === "spawnDummy") {
+        let thisdummy: Dummy = newDummy(element.Position);
     }
-}
+})

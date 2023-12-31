@@ -30,6 +30,14 @@ export class Dummy {
         return this.humanoidRootPart;
     }
 
+    public getName(): string {
+        return this.model.Name;
+    }
+
+    public setName(input: string): void {
+        this.model.Name = input;
+    }
+
     public tp(where: Vector3): void {
         this.humanoidRootPart.Position = where;
     }
