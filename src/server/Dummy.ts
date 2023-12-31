@@ -3,19 +3,19 @@ import { Workspace, ServerStorage, StarterPack } from "@rbxts/services";
 export class Dummy {
     private model: Model;
     private humanoid: Humanoid;
-    private humanoidRootPart: Part;
+    private primaryPart: Part;
 
     public constructor(pos: Vector3) {
         this.model = ServerStorage.Dummy.Clone();
         this.model.Parent = Workspace;
 
         this.humanoid = this.model.WaitForChild("Humanoid") as Humanoid;
-        this.humanoidRootPart = this.model.WaitForChild("HumanoidRootPart") as Part;
+        this.primaryPart = this.model.PrimaryPart as Part;
         this.tp(pos);
     }
 
     public getPosition(): Vector3 {
-        return this.humanoidRootPart.Position;
+        return this.primaryPart.Position;
     }
 
     public getModel(): Model {
@@ -26,8 +26,8 @@ export class Dummy {
         return this.humanoid;
     }
 
-    public getHumanoidRootPart(): Part {
-        return this.humanoidRootPart;
+    public getPrimaryPart(): Part {
+        return this.primaryPart;
     }
 
     public getName(): string {
@@ -39,6 +39,6 @@ export class Dummy {
     }
 
     public tp(where: Vector3): void {
-        this.humanoidRootPart.Position = where;
+        this.model.MoveTo(where);
     }
 }
