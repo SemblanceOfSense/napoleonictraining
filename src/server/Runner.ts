@@ -6,9 +6,10 @@ export class Runner extends Dummy {
     private folder: Folder;
     private parts: Part[];
 
-    constructor(pos: Vector3, fold: Folder) {
-        super(pos);
-
+    constructor(pos: Vector3, rot: Vector3, fold: Folder) {
+        print("Runner Spawned");
+        super(pos, rot);
+        print("Continued");
         this.getModel().Name = "Runner";
         this.getPrimaryPart().Anchored = false;
 

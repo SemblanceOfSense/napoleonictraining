@@ -5,19 +5,30 @@ export class Dummy {
     private humanoid: Humanoid;
     private primaryPart: Part;
     private number: NumberValue;
+    private rotation: Vector3;
 
-    public constructor(pos: Vector3) {
+    public constructor(pos: Vector3, rot: Vector3) {
         this.model = ServerStorage.Dummy.Clone();
         this.model.Parent = Workspace;
         this.number = this.model.WaitForChild("Number") as NumberValue;
+        this.rotation = rot;
 
         this.humanoid = this.model.WaitForChild("Humanoid") as Humanoid;
         this.primaryPart = this.model.PrimaryPart as Part;
         this.tp(pos);
+        this.setRotation(this.rotation);
     }
 
     public getPosition(): Vector3 {
         return this.primaryPart.Position;
+    }
+
+    public getRotation(): Vector3 {
+        return this.primaryPart.Rotation;
+    }
+
+    public setRotation(r: Vector3): void {
+        this.primaryPart.Rotation = r;
     }
 
     public getModel(): Model {
