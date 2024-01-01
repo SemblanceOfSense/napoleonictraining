@@ -32,7 +32,9 @@ export class Runner extends Dummy {
         wait(7);
         while (true) {
             for (let x of this.getParts()) {
-                this.getHumanoid().MoveTo(x.Position);
+                let human: Humanoid = this.getHumanoid();
+                human.MoveTo(x.Position);
+                human.MoveToFinished.Wait();
             }
         }
     }
