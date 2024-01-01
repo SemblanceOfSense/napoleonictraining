@@ -29,7 +29,10 @@ export class Runner extends Dummy {
     }
 
     public loop(): void {
-        wait(7);
+        let animator: Animator = this.getHumanoid().WaitForChild("Animator") as Animator;
+        let walkTrack: Animation = this.getModel().WaitForChild("WalkAnim") as Animation;
+        let runAnimTrack: AnimationTrack = animator.LoadAnimation(walkTrack);
+        runAnimTrack.Play();
         while (true) {
             for (let x of this.getParts()) {
                 let human: Humanoid = this.getHumanoid();
