@@ -13,5 +13,6 @@ export function newDummy(v3: Vector3): Dummy {
 export function newRunner(v3: Vector3, folder: Folder): Runner {
     let obj: Runner = new Runner(v3, folder);
     let num: number = runnerList.push(obj);
+    obj.loop()
     return obj;
 }

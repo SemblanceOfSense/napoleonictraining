@@ -1,11 +1,11 @@
-import { Workspace } from "@rbxts/services";
+import { ServerStorage, Workspace } from "@rbxts/services";
 import { Dummy } from "./Dummy"
 import { Runner } from "./Runner"
 import { getDescendantsWhichIsA } from "./getDescendentsWhichIsA";
 import { newDummy, newRunner } from "./DummyManager";
 
 const descendants: Array<Part> = getDescendantsWhichIsA(Workspace, "Part")
-let fold: Folder = Workspace.runnerTurns;
+let fold: Folder = ServerStorage.runnerTurns;
 
 descendants.forEach( (element) => {
     if (element.Name === "spawnDummy") {

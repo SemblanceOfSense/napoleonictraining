@@ -9,6 +9,9 @@ export class Runner extends Dummy {
     constructor(pos: Vector3, fold: Folder) {
         super(pos);
 
+        this.getModel().Name = "Runner";
+        this.getPrimaryPart().Anchored = false;
+
         this.folder = fold;
         this.parts = this.folderList(fold);
     }
@@ -37,6 +40,7 @@ export class Runner extends Dummy {
         for (let x of pathList) {
             pathList.push(PathfindingService.CreatePath(this.getPathfindingParams()));
         }
+        print("Paths fetched!");
         return pathList;
     }
 
@@ -51,11 +55,14 @@ export class Runner extends Dummy {
                 paths[i].ComputeAsync(p[i].Position, p[i + 1].Position);
             }
         }
+        print("computed!");
     }
 
     public loop(): void {
+        wait(7);
         while (true) {
             this.computePaths(this.getPaths());
+            wait(1);
         }
     }
 }
