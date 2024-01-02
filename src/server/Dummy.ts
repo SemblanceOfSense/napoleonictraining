@@ -23,12 +23,13 @@ export class Dummy {
         return this.primaryPart.Position;
     }
 
-    public getRotation(): Vector3 {
-        return this.primaryPart.Rotation;
+    public getCFrame(): CFrame {
+        return this.getModel().GetPivot();
     }
 
     public setRotation(r: Vector3): void {
-        this.primaryPart.Rotation = r;
+        let cframe: CFrame = this.getCFrame();
+        this.getModel().PivotTo(CFrame.Angles(math.rad(r.X), math.rad(r.Y), math.rad(r.Z)));
     }
 
     public getModel(): Model {
