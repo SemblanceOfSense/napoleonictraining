@@ -29,7 +29,7 @@ export class Dummy {
 
     public setRotation(r: Vector3): void {
         let cframe: CFrame = this.getCFrame();
-        this.getModel().PivotTo(CFrame.Angles(math.rad(r.X), math.rad(r.Y), math.rad(r.Z)));
+        this.getModel().PivotTo(cframe.mul(CFrame.Angles(math.rad(r.X), math.rad(r.Y), math.rad(r.Z))));
     }
 
     public getModel(): Model {
